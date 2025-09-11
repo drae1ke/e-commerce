@@ -1,19 +1,40 @@
- const products = [
+import smartphoneX from './phone_banner.jpg'
+import ultrabookPro from './hero.jpg'
+import headphones from './headphones.jpg'
+import budgetPhone from './ipad.jpg'
+import gamingLaptop from './hero.jpg'
+import wirelessCharger from './hero.jpg'
+import workstation from './macbook.jpg'
+
+
+const products = [
             {
                 id: 1,
+                
                 category: "phone",
                 price: 999.99,
                 name: "Premium Smartphone X",
                 description: "Latest flagship smartphone with AMOLED display, triple camera system, and 5G connectivity.",
-                image: "https://placehold.co/300x300/6e8efb/white?text=Smartphone+X"
+                image: smartphoneX,
+                isFeatured: true,
+                isNewArrival: false
+                
             },
             {
+
+
+
+
+
+
                 id: 2,
                 category: "computer",
                 price: 1299.99,
                 name: "Ultrabook Pro",
                 description: "Thin and light laptop with powerful processor, 16GB RAM, and long battery life for productivity on the go.",
-                image: "https://placehold.co/300x300/6e8efb/white?text=Ultrabook+Pro"
+                image: gamingLaptop,
+                isFeatured: true,
+                isNewArrival: true
             },
             {
                 id: 3,
@@ -21,7 +42,9 @@
                 price: 129.99,
                 name: "Wireless Noise-Canceling Headphones",
                 description: "Premium headphones with active noise cancellation and 30-hour battery life.",
-                image: "https://placehold.co/300x300/6e8efb/white?text=Headphones"
+                image: smartphoneX,
+                isFeatured: true,
+                isNewArrival: false
             },
             {
                 id: 4,
@@ -29,7 +52,9 @@
                 price: 699.99,
                 name: "Budget Smartphone",
                 description: "Affordable smartphone with great camera and all-day battery life.",
-                image: "https://placehold.co/300x300/6e8efb/white?text=Budget+Phone"
+                image: budgetPhone,
+                isFeatured: false,
+                isNewArrival: true
             },
             {
                 id: 5,
@@ -37,7 +62,9 @@
                 price: 1999.99,
                 name: "Gaming Laptop",
                 description: "High-performance gaming laptop with dedicated graphics card and high refresh rate display.",
-                image: "https://placehold.co/300x300/6e8efb/white?text=Gaming+Laptop"
+                image: gamingLaptop,
+                isFeatured: true,
+                isNewArrival: false
             },
             {
                 id: 6,
@@ -45,7 +72,9 @@
                 price: 89.99,
                 name: "Smart Watch",
                 description: "Feature-packed smartwatch with health monitoring and notification support.",
-                image: "https://placehold.co/300x300/6e8efb/white?text=Smart+Watch"
+                image: ultrabookPro,
+                isFeatured: false,
+                isNewArrival: true
             },
             {
                 id: 7,
@@ -53,7 +82,9 @@
                 price: 49.99,
                 name: "Wireless Charger",
                 description: "Fast wireless charger compatible with all Qi-enabled devices.",
-                image: "https://placehold.co/300x300/6e8efb/white?text=Wireless+Charger"
+                image: workstation,
+                isFeatured: false,
+                isNewArrival: false
             },
             {
                 id: 8,
@@ -61,7 +92,9 @@
                 price: 2499.99,
                 name: "Desktop Workstation",
                 description: "Powerful desktop computer for professionals and content creators.",
-                image: "https://placehold.co/300x300/6e8efb/white?text=Workstation"
+                image: "https://placehold.co/300x300/6e8efb/white?text=Workstation",
+                isFeatured: true,
+                isNewArrival: false
             },
             {
                 id: 9,
@@ -69,7 +102,9 @@
                 price: 1199.99,
                 name: "Foldable Phone",
                 description: "Innovative foldable smartphone with flexible display and multitasking capabilities.",
-                image: "https://placehold.co/300x300/6e8efb/white?text=Foldable+Phone"
+                image: "https://placehold.co/300x300/6e8efb/white?text=Foldable+Phone",
+                isFeatured: false,
+                isNewArrival: true
             },
             {
                 id: 10,
@@ -77,7 +112,9 @@
                 price: 199.99,
                 name: "Premium Earbuds",
                 description: "True wireless earbuds with excellent sound quality and noise cancellation.",
-                image: "https://placehold.co/300x300/6e8efb/white?text=Earbuds"
+                image: headphones,
+                isFeatured: true,
+                isNewArrival: true
             },
             {
                 id: 11,
@@ -85,7 +122,7 @@
                 price: 899.99,
                 name: "Student Laptop",
                 description: "Reliable laptop for students with all-day battery and lightweight design.",
-                image: "https://placehold.co/300x300/6e8efb/white?text=Student+Laptop"
+                image: wirelessCharger
             },
             {
                 id: 12,
@@ -400,5 +437,5 @@
                 image: "https://placehold.co/300x300/6e8efb/white?text=Gaming+Headset"
             }
         ];
-
+products.forEach(product => { if (product.rating == null) product.rating = (product.id % 5) + 1; });
         export default products; 

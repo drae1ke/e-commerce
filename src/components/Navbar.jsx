@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { FaShoppingCart, FaBars, FaTimes } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import './Navbar.css';
+import { ShopContext } from '../Context/ShopContext';
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState('Home');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { cartCount } = useContext(ShopContext);
 
   return (
     <nav>
@@ -43,8 +45,10 @@ const Navbar = () => {
 
         <div className="nav-right">
           <div className="cart-icon">
+            <Link to='/cart'>
             <FaShoppingCart />
-            <span className="cart-count">0</span>
+            <span className="cart-count">{cartCount}</span>
+            </Link>
           </div>
           <div className='login-sign-up'>
             <button className='log-in'>

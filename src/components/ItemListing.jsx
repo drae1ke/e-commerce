@@ -1,19 +1,22 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import Rating from './Rating'
+import AddToCartButton from './AddToCartButton'
 
 const ItemListing = ({id, name, price, image,product}) => {
    
   return (
       
         <div key={id} className='arrival'>
-          <img src={image} alt={name} />
-          <h3>{name}</h3>
+          <Link to={`/product/${id}`}>
+            <img src={image} alt={name} />
+          </Link>
+          <h3>
+            {name}
+          </h3>
           <Rating product={product}/>
           <p>{price}</p>
-          <Link to={`/product/${id}`} className='btn'>
-            Buy Now
-          </Link>
+          <AddToCartButton productId={id} />      
         </div>
 
   )

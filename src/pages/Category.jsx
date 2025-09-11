@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { ShopContext } from '../Context/ShopContext'
 import '../pages/CSS/category.css'
-import AddToCartButton from '../components/AddToCartButton'
+import Item from '../components/Item'
 
 const Category = (props) => {
   const { products } = useContext(ShopContext)
@@ -13,12 +13,11 @@ const Category = (props) => {
         <h1>{props.category}</h1>
         <div className='products-container'>
           {products.filter(item => item.category === props.category).map((product) => (
-            <div className='product-card' key={product.id}>
-              <img src={product.image} alt={product.name} />
-              <h2>{product.name}</h2>
-              <AddToCartButton />
-              <p>KES{product.price}</p>
-            </div>
+            <Item key={product.id}
+             id={product.id} 
+             image={product.image} 
+             name={product.name} 
+             price={product.price} />
           ))}
         </div>
     </div>
