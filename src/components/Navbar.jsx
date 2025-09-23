@@ -20,7 +20,7 @@ const Navbar = () => {
               className={menuOpen === "Home" ? "active" : ""} 
               onClick={() => { setMenuOpen("Home"); setMobileMenuOpen(false); }}
             >
-              <Link to='/'>Home</Link>
+              <Link to='/AdminDashboard'>Home</Link>
             </li>
             <li 
               className={menuOpen === "Computers" ? "active" : ""} 

@@ -1,0 +1,183 @@
+.low-stock-alert {
+  width: 400px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.alert-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+  color: #7c2d12;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.alert-header:hover {
+  background: linear-gradient(135deg, #ff8a8e 0%, #fac0b4 100%);
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.alert-icon {
+  font-size: 18px;
+}
+
+.alert-header h3 {
+  margin: 0;
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+.product-count {
+  background: rgba(255, 255, 255, 0.3);
+  padding: 2px 10px;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+}
+
+.products-list {
+  max-height: 500px;
+  overflow-y: auto;
+  padding: 10px;
+}
+
+.product-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
+  margin-bottom: 8px;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.product-item:hover {
+  transform: translateX(5px);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+}
+
+.product-item.critical {
+  background: #fff5f5;
+  border-left: 4px solid #e53e3e;
+}
+
+.product-item.warning {
+  background: #fffaf0;
+  border-left: 4px solid #dd6b20;
+}
+
+.product-item.low {
+  background: #f0fff4;
+  border-left: 4px solid #38a169;
+}
+
+.product-info {
+  flex: 1;
+}
+
+.product-name {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 6px;
+  color: #2d3748;
+}
+
+.stock-bar {
+  width: 160px;
+  height: 6px;
+  background: #edf2f7;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.stock-progress {
+  height: 100%;
+  border-radius: 3px;
+  transition: width 0.3s ease;
+}
+
+.product-item.critical .stock-progress {
+  background: #e53e3e;
+}
+
+.product-item.warning .stock-progress {
+  background: #dd6b20;
+}
+
+.product-item.low .stock-progress {
+  background: #38a169;
+}
+
+.stock-info {
+  text-align: right;
+  margin-left: 15px;
+}
+
+.stock-count {
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.product-item.critical .stock-count {
+  color: #e53e3e;
+}
+
+.product-item.warning .stock-count {
+  color: #dd6b20;
+}
+
+.product-item.low .stock-count {
+  color: #38a169;
+}
+
+.stock-threshold {
+  display: block;
+  font-size: 0.75rem;
+  color: #718096;
+  margin-top: 2px;
+}
+
+/* Custom scrollbar */
+.products-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.products-list::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.products-list::-webkit-scrollbar-thumb {
+  background: #d0d0d0;
+  border-radius: 10px;
+}
+
+.products-list::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+/* Animation for expand/collapse */
+.products-list {
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}

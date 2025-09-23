@@ -13,6 +13,7 @@ import accesories from './assets/accesories_banner.jpg'
 import laptop from './assets/laptop_banner.jpg'
 import phone from './assets/phone_banner.jpg'
 import Signup from './pages/Signup'
+import AdminDashboard from './pages/AdminDashboard';
 
 function App() {
 
@@ -32,6 +33,7 @@ function App() {
         <Route path="/cart" element={<Cart />} />
         <Route path="/checkout" element={<Checkout />} />
         <Route path="/order" element={<Order />} />
+        <Route path="/adminDashboard" element={<AdminDashboard />} />
       </Routes>
         <Footer/>
     </BrowserRouter>
