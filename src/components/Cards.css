@@ -2,27 +2,34 @@
     display:flex;
     margin-top:30px;
     gap:20px;
+    flex-wrap:wrap;
 }
 .leftside-cards{
     display:flex;
     flex-direction:column;
 }
 .total-orders-card{
+    background-color:#fff;
+    border-radius:10px;
+    box-shadow:0 6px 18px rgba(0,0,0,0.06);
+    overflow:hidden;
+}
+.low-products-card{
+    margin-top:30px;
     display:flex;
     flex-direction: column;
-    height:200px;
-    width:450px;
-    background-color:#fff;
     border-radius:10px;
 }
 .upper-total-orders-card{
-    text-align: flex-start;
-    margin-left: 20px;
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding:20px;
 }
 .lower-total-orders-card{
     display:flex;
     justify-content: space-between;
-    padding:20px
+    padding:20px;
 }
 .lower-total-orders-card div{
     height:40px;
@@ -31,6 +38,9 @@
     font-size: 12px;
     text-align: center;
     color: #fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
 }
 .completed-orders{
     background-color:hsla(120, 82%, 40%, 0.583);
@@ -40,6 +50,25 @@
 }
 .cancelled-orders{
   background-color:hsla(0, 88%, 28%, 0.389)
+}
+/* Typography inside cards */
+.upper-total-orders-card h4,
+.card-header h4{
+    margin:0;
+    font-weight:600;
+}
+.upper-total-orders-card h3,
+.total-conversion-rate h3,
+.total-sales-card h3,
+.total-visitors-card h3{
+    margin:6px 0 2px 0;
+}
+.upper-total-orders-card span,
+.total-conversion-rate span,
+.total-sales-card span,
+.total-visitors-card span{
+    color:#6b7280; /* gray-500 */
+    font-size:12px;
 }
 /* .total-products-card{
     height:500px;
@@ -56,17 +85,36 @@
     flex-direction:column;
     gap:20px;
 }
-.total-orders-card{
+.total-conversion-rate{
     height:200px;
     width:450px;
     background-color:#fff;
     border-radius:10px;
+    box-shadow:0 6px 18px rgba(0,0,0,0.06);
+    padding:20px;
 }
-.less-quantity-card{
+.metrics{
     height:240px;
     width:450px;
     background-color:#fff;
     border-radius:10px;
+    box-shadow:0 6px 18px rgba(0,0,0,0.06);
+    padding:16px;
+}
+.metrics .metric{
+    background:#f9fafb;
+    border:1px solid #eef2f7;
+    border-radius:8px;
+    padding:10px 12px;
+}
+.metrics .metric h5{
+    margin:0 0 6px 0;
+    font-weight:600;
+    color:#111827;
+}
+.metrics .metric p{
+    margin:0;
+    color:#1f2937;
 }
 .bottom-cards{
     display:flex;
@@ -77,9 +125,43 @@
     width: 225px;
     height: 150px;
     background-color: #fff;
+    border-radius:10px;
+    box-shadow:0 6px 18px rgba(0,0,0,0.06);
+    padding:16px;
 }
 .total-visitors-card{
     width: 225px;
     height: 150px;
     background-color: #fff;
+    border-radius:10px;
+    box-shadow:0 6px 18px rgba(0,0,0,0.06);
+    padding:16px;
+}
+.card-header{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:10px;
+}
+
+/* Icons */
+.upper-total-orders-card svg,
+.card-header svg{
+    font-size:22px;
+    color:#2563eb; /* blue-600 */
+}
+
+/* Responsive */
+@media (max-width: 900px){
+    .total-conversion-rate,
+    .metrics{
+        width:100%;
+    }
+    .bottom-cards{
+        flex-direction:column;
+    }
+    .total-sales-card,
+    .total-visitors-card{
+        width:100%;
+    }
 }

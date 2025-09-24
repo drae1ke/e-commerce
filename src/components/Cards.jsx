@@ -1,5 +1,5 @@
 import React from 'react'
-import {FaUsers} from 'react-icons/fa'
+import {FaUsers, FaDollarSign, FaEye} from 'react-icons/fa'
 import './Cards.css'
 import LowStockAlert from './LowStockAlert'
 
@@ -30,16 +30,53 @@ const Cards = () => {
                    </div>
                </div>
            </div>
-           <div className='total-products-card'>
+           <div className='low-products-card'>
               <LowStockAlert/>
            </div>
         </div>
         <div className="rightside-cards">
-           <div className='total-orders-card'></div>
-           <div className='less-quantity-card'></div>
+          <div className='total-conversion-rate'>
+            <div className='card-header'>
+              <h4>Conversion Rate</h4>
+            </div>
+            <h3>3.8%</h3>
+            <span>vs last week +0.4%</span>
+          </div>
+          <div className='metrics'>
+            <div className='metric'>
+              <h5>Avg Order Value</h5>
+              <p>$42.30</p>
+            </div>
+            <div className='metric'>
+              <h5>Cart Abandonment</h5>
+              <p>68%</p>
+            </div>
+            <div className='metric'>
+              <h5>Repeat Customers</h5>
+              <p>23%</p>
+            </div>
+            <div className='metric'>
+              <h5>CTR</h5>
+              <p>1.9%</p>
+            </div>
+          </div>
            <div className='bottom-cards'>
-                <div className='total-sales-card'></div>
-                <div className='total-visitors-card'></div>
+               <div className='total-sales-card'>
+                    <div className='card-header'>
+                         <FaDollarSign/>
+                         <h4>Total Sales</h4>
+                    </div>
+                    <h3>$12,450</h3>
+                    <span>last 30 days</span>
+               </div>
+               <div className='total-visitors-card'>
+                    <div className='card-header'>
+                         <FaEye/>
+                         <h4>Visitors</h4>
+                    </div>
+                    <h3>8,213</h3>
+                    <span>this week</span>
+               </div>
            </div>
        </div>
     </div>
