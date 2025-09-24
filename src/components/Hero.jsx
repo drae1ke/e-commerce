@@ -11,8 +11,8 @@ const Hero = () => {
           <h1>Welcome to <span>FUSHub</span> - Your Electonics Destination</h1>
           <p>Discover the season's durable Electonics at unbeatable prices. Shop now and get 30% off your first order!</p>
           <div className="hero-cta">
-            <button className="shop-now">Shop Now</button>
-            <button className="explore">Explore Collection</button>
+            <Link to='/computers'><button className="shop-now">Shop Now</button></Link>
+            <Link to='/computers'><button className="explore">Explore Collection</button></Link>
           </div>
           <div className="hero-stats">
             <div className="stat-item">
@@ -33,11 +33,11 @@ const Hero = () => {
           <div className="featured-categories">
             <h2>Featured Categories</h2>
             <div className="category-tags">
-              <div className="category-tag"> <Link to='/Computers'>Contact Us</Link> </div>
-              <div className="category-tag">Computers</div>
-              <div className="category-tag">Accessories</div>
-              <div className="category-tag">Phones</div>
-              <div className="category-tag">Others</div>
+              <div className="category-tag"> <Link to='/contact'>Contact Us</Link> </div>
+              <div className="category-tag"><Link to='/computers'>Computers</Link></div>
+              <div className="category-tag"><Link to='/accesories'>Accessories</Link></div>
+              <div className="category-tag"><Link to='/phones'>Phones</Link></div>
+              <div className="category-tag"><Link to='/computers'>Others</Link></div>
             </div>
           </div>
           <div className="hero-image-container">

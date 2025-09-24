@@ -20,25 +20,25 @@ const Navbar = () => {
               className={menuOpen === "Home" ? "active" : ""} 
               onClick={() => { setMenuOpen("Home"); setMobileMenuOpen(false); }}
             >
-              <Link to='/AdminDashboard'>Home</Link>
+              <Link to='/'>Home</Link>
             </li>
             <li 
               className={menuOpen === "Computers" ? "active" : ""} 
               onClick={() => { setMenuOpen("Computers"); setMobileMenuOpen(false); }}
             >
-              <Link to='/Computers'>Computers</Link>
+              <Link to='/computers'>Computers</Link>
             </li>
             <li 
               className={menuOpen === "Phones" ? "active" : ""} 
               onClick={() => { setMenuOpen("Phones"); setMobileMenuOpen(false); }}
             >
-              <Link to='/Phones'>Phones</Link>
+              <Link to='/phones'>Phones</Link>
             </li>
             <li 
               className={menuOpen === "Accesories" ? "active" : ""} 
               onClick={() => { setMenuOpen("Accesories"); setMobileMenuOpen(false); }}
             >
-              <Link to='/Accesories'>Accesories</Link>
+              <Link to='/accesories'>Accessories</Link>
             </li>
           </ul>
         </div>
@@ -52,7 +52,7 @@ const Navbar = () => {
           </div>
           <div className='login-sign-up'>
             <button className='log-in'>
-              <Link to='/Login'>Login</Link>
+              <Link to='/login'>Login</Link>
             </button>
           </div>
         </div>

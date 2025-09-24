@@ -56,28 +56,133 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 12px;
+    gap: 20px;
     min-width: 260px;
-    max-width: 360px;
+    max-width: 400px;
 }
+
 .product-info h1 {
-    font-size: 1.75rem;
+    font-size: 2rem;
     line-height: 1.2;
     font-weight: 700;
-    margin: 0 0 12px 0;
+    margin: 0;
+    color: #1f2937;
 }
-.product-info p {
-    font-size: 0.975rem;
+
+.product-description {
+    font-size: 1rem;
     font-weight: 400;
-    color: #444;
+    color: #6b7280;
+    line-height: 1.6;
     margin: 0;
 }
 
-.product-info p:nth-child(3) {
-    font-size: 1.15rem;
+.price-section {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.product-price {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #059669;
+}
+
+.original-price {
+    font-size: 1.25rem;
+    font-weight: 400;
+    color: #9ca3af;
+    text-decoration: line-through;
+}
+
+.product-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.meta-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.meta-label {
     font-weight: 600;
-    color: #111;
-    margin: 8px 0 4px 0;
+    color: #374151;
+}
+
+.stock-status {
+    font-weight: 600;
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-size: 0.875rem;
+}
+
+.stock-status.in-stock {
+    background: #d1fae5;
+    color: #065f46;
+}
+
+.stock-status.low-stock {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+.stock-status.out-of-stock {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+.product-specs {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 16px;
+    background: #f9fafb;
+    border-radius: 8px;
+    width: 100%;
+}
+
+.spec-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.spec-label {
+    font-weight: 500;
+    color: #6b7280;
+}
+
+.spec-value {
+    font-weight: 600;
+    color: #1f2937;
+}
+
+.product-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+}
+
+.wishlist-btn {
+    width: 100%;
+    padding: 12px 16px;
+    border-radius: 10px;
+    background-color: transparent;
+    color: #dc2626;
+    border: 2px solid #dc2626;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.wishlist-btn:hover {
+    background-color: #dc2626;
+    color: white;
 }
 .product-info button {
     width: 100%;
