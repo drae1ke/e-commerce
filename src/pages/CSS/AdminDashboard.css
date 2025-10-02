@@ -2,3 +2,44 @@ main{
     display:flex ;
     gap: 30px;
 }
+
+.admin-section{
+	background:#fff;
+	border-radius:10px;
+	box-shadow:0 6px 18px rgba(0,0,0,0.06);
+	padding:16px;
+	margin-top:20px;
+}
+.section-header{
+	display:flex;
+	align-items:center;
+	justify-content:space-between;
+	gap:12px;
+	margin-bottom:12px;
+}
+.section-header input, .section-header select{
+	border:1px solid #e5e7eb;
+	border-radius:8px;
+	padding:8px 10px;
+	outline:none;
+}
+.table-wrapper{ overflow:auto; }
+.admin-table{ width:100%; border-collapse: collapse; }
+.admin-table th, .admin-table td{ padding:10px 12px; border-bottom:1px solid #f1f5f9; text-align:left; }
+.admin-table thead th{ cursor:pointer; color:#334155; }
+
+/* Orders status badge */
+.status-badge{ color:#fff; padding:4px 8px; border-radius:999px; font-size:12px; }
+
+/* Messages layout */
+.messages-layout{ display:flex; gap:16px; }
+.inbox{ width:320px; background:#fafafa; border:1px solid #f1f5f9; border-radius:10px; padding:8px; }
+.message-list{ list-style:none; margin:0; padding:0; max-height:520px; overflow:auto; }
+.message-list li{ padding:10px; border-bottom:1px solid #eee; cursor:pointer; }
+.message-list li.active{ background:#e5efff; }
+.message-list .from{ font-weight:600; }
+.message-list .subject{ color:#334155; font-size:14px; }
+.message-list .date{ color:#64748b; font-size:12px; }
+.message-viewer{ flex:1; background:#fff; border:1px solid #f1f5f9; border-radius:10px; padding:16px; }
+.viewer-header{ margin-bottom:8px; }
+.viewer-header .meta{ display:flex; gap:12px; color:#64748b; font-size:12px; }

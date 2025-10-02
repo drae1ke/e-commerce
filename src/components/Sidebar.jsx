@@ -3,13 +3,16 @@ import {FaUsers, FaBoxOpen, FaShoppingCart, FaFacebookMessenger, FaChartLine} fr
 import { useState } from 'react'
 import './Sidebar.css'
 
-const Sidebar = () => {
+const Sidebar = ({ activeItem: activeItemProp, onChange }) => {
 
-    const [activeItem, setActiveItem] = useState(0);
+	const [uncontrolledActive, setUncontrolledActive] = useState(0);
+	const isControlled = typeof activeItemProp === 'number';
+	const activeItem = isControlled ? activeItemProp : uncontrolledActive;
 
-    const handleItemClick = (index) => {
-        setActiveItem(index);
-    };
+	const handleItemClick = (index) => {
+		if (onChange) onChange(index);
+		if (!isControlled) setUncontrolledActive(index);
+	};
   return (
     <div className="sidebar">
         <ul>
