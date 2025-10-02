@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import { ShopContext } from '../Context/ShopContext'
 import '../pages/CSS/category.css'
+import '../components/ProductCard.css'
 import Item from '../components/Item'
 
 const Category = (props) => {
@@ -11,7 +12,7 @@ const Category = (props) => {
          <img src={props.banner} alt="banner"/>
        </div>
         <h1>{props.category}</h1>
-        <div className='products-container'>
+        <div className='products-grid'>
           {products.filter(item => item.category === props.category).map((product) => (
             <Item key={product.id}
              id={product.id} 

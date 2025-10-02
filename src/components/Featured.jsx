@@ -1,5 +1,6 @@
 import React, { useContext } from 'react'
 import './Featured.css'
+import './ProductCard.css'
 import ItemListing from './ItemListing'
 import { ShopContext } from '../Context/ShopContext'
 
@@ -11,7 +12,7 @@ const Featured = () => {
   return (
     <div className='new-arrivals'>
       <h2>New Arrivals</h2>
-      <div className='arrivals'>
+      <div className='products-grid'>
         {newArrivals.map((product) => (
         <ItemListing 
            id = {product.id}
