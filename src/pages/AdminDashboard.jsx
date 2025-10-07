@@ -6,6 +6,7 @@ import './CSS/AdminDashboard.css'
 const AdminCustomers = React.lazy(() => import('../sections/AdminCustomers'))
 const AdminOrders = React.lazy(() => import('../sections/AdminOrders'))
 const AdminMessages = React.lazy(() => import('../sections/AdminMessages'))
+const AdminProducts = React.lazy(() => import('../sections/AdminProducts'))
 
 
 const Dashboard = ()=> {
@@ -19,6 +20,12 @@ const Dashboard = ()=> {
 				return (
 					<React.Suspense fallback={<div>Loading customers...</div>}>
 						<AdminCustomers />
+					</React.Suspense>
+				)
+			case 2:
+				return (
+					<React.Suspense fallback={<div>Loading products...</div>}>
+						<AdminProducts />
 					</React.Suspense>
 				)
 			case 3:

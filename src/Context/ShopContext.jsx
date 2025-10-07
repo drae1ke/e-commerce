@@ -1,10 +1,42 @@
 import React from "react";
-import { createContext, useMemo, useState, useCallback } from "react";
-import products from '../assets/products';
+import { createContext, useMemo, useState, useCallback, useEffect } from "react";
+import axiosClient from '../api/axiosClient';
 
 export const ShopContext = createContext(null);
 const ShopProvider = (props ) => {
+    const [products, setProducts] = useState([]);
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState('');
     const [cartItemsById, setCartItemsById] = useState({});
+
+    const refreshProducts = useCallback(async () => {
+        setLoading(true);
+        setError('');
+        try {
+            const res = await axiosClient.get('/products');
+            const list = Array.isArray(res.data) ? res.data : (res.data?.data || []);
+            // Normalize minimal fields we rely on across UI components
+            const normalized = list.map((p) => {
+                const id = p._id != null ? p._id : p.id;
+                const price = typeof p.price === 'string' ? Number(p.price) : p.price;
+                const images = Array.isArray(p.images) ? p.images : [];
+                const image = p.image || images[0] || '';
+                // Support both isNewArrival and isNewProduct flags
+                const isNewArrival = p.isNewArrival != null ? p.isNewArrival : !!p.isNewProduct;
+                return { ...p, id, price, image, images, isNewArrival };
+            });
+            setProducts(normalized);
+        } catch (e) {
+            setError('Failed to load products');
+            setProducts([]);
+        } finally {
+            setLoading(false);
+        }
+    }, []);
+
+    useEffect(() => {
+        refreshProducts();
+    }, [refreshProducts]);
 
     const addToCart = useCallback((productId, quantity = 1) => {
         setCartItemsById(prev => {
@@ -40,13 +72,16 @@ const ShopProvider = (props ) => {
                 return product ? { ...product, quantity } : null;
             })
             .filter(Boolean);
-    }, [cartItemsById]);
+    }, [cartItemsById, products]);
 
     const cartCount = useMemo(() => cartItems.reduce((sum, item) => sum + item.quantity, 0), [cartItems]);
     const cartSubtotal = useMemo(() => cartItems.reduce((sum, item) => sum + (Number(item.price) * item.quantity), 0), [cartItems]);
 
     const contextValue = {
         products,
+        loading,
+        error,
+        refreshProducts,
         cartItems,
         cartCount,
         cartSubtotal,

@@ -1,14 +1,18 @@
 import React, { useState } from 'react'
 import { FaUser, FaLock, FaEye, FaEyeSlash } from 'react-icons/fa'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import './login.css'
+import axiosClient from '../api/axiosClient'
+import Toast from './Toast'
 
 const Login = () => {
+  const navigate = useNavigate()
   const [showPassword, setShowPassword] = useState(false)
   const [formData, setFormData] = useState({
     email: '',
-    password: ''
+    pwd: ''
   })
+  const [toast, setToast] = useState({ visible: false, message: '', type: 'error' })
 
   const handleInputChange = (e) => {
     setFormData({
@@ -17,10 +21,23 @@ const Login = () => {
     })
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    // Handle login logic here
-    console.log('Login attempt:', formData)
+    try {
+      const res = await axiosClient.post('/auth', {
+        email: formData.email,
+        pwd: formData.pwd
+      })
+      const token = res?.data?.token || res?.data?.accessToken
+      if (token) {
+        localStorage.setItem('auth_token', token)
+      }
+      setToast({ visible: true, message: 'Login successful.', type: 'success' })
+      setTimeout(() => navigate('/adminDashboard'), 500)
+    } catch (err) {
+      const message = err?.response?.data?.message || 'Invalid credentials. Please try again.'
+      setToast({ visible: true, message, type: 'error' })
+    }
   }
 
   const togglePasswordVisibility = () => {
@@ -29,6 +46,12 @@ const Login = () => {
 
   return (
     <div className='login-page'>
+      <Toast 
+        visible={toast.visible}
+        message={toast.message}
+        type={toast.type}
+        onClose={() => setToast(prev => ({ ...prev, visible: false }))}
+      />
       <div className='login-wrapper'>
         <div className='login-container'>
           <div className='login-header'>
@@ -60,10 +83,10 @@ const Login = () => {
                 <FaLock className='input-icon' />
                 <input 
                   type={showPassword ? "text" : "password"}
-                  name="password"
-                  id="password" 
+                  name="pwd"
+                  id="pwd" 
                   placeholder='Enter your password'
-                  value={formData.password}
+                  value={formData.pwd}
                   onChange={handleInputChange}
                   required 
                 />

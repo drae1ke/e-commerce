@@ -1,36 +1,55 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import './signup.css'
+import axiosClient from '../api/axiosClient'
+import Toast from './Toast'
 
 const Signup = () => {
+    const navigate = useNavigate()
     const [formData, setFormData] = useState({
-        name: '',
+        user: '',
         email: '',
-        password: '',
+        pwd: '',
         confirmPassword: ''
     })
     const [termsAccepted, setTermsAccepted] = useState(false)
+    const [toast, setToast] = useState({ visible: false, message: '', type: 'error' })
 
     const handleInputChange = (e) => {
         const { name, value } = e.target
         setFormData(prev => ({ ...prev, [name]: value }))
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
         if (!termsAccepted) {
-            alert('Please accept the Terms of Service and Privacy Policy to continue.')
+            setToast({ visible: true, message: 'Please accept Terms and Privacy Policy.', type: 'error' })
             return
         }
-        if (formData.password !== formData.confirmPassword) {
-            alert('Passwords do not match')
+        if (formData.pwd !== formData.confirmPassword) {
+            setToast({ visible: true, message: 'Passwords do not match.', type: 'error' })
             return
         }
-        console.log('Signup attempt:', formData)
+        try {
+            const payload = { user: formData.user, email: formData.email, pwd: formData.pwd }
+            const res = await axiosClient.post('/register', payload)
+            // success: navigate to login and maybe show success toast
+            setToast({ visible: true, message: 'Account created. You can now log in.', type: 'success' })
+            setTimeout(() => navigate('/login'), 800)
+        } catch (err) {
+            const message = err?.response?.data?.message || 'Signup failed. Try again.'
+            setToast({ visible: true, message, type: 'error' })
+        }
     }
 
     return (
         <div>
+            <Toast
+                visible={toast.visible}
+                message={toast.message}
+                type={toast.type}
+                onClose={() => setToast(prev => ({ ...prev, visible: false }))}
+            />
             <div className='signup-container'>
                 <div className='signup-header'>
                     <h1>Signup</h1>
@@ -39,16 +58,16 @@ const Signup = () => {
                 <div className='signup-form'>
                     <form onSubmit={handleSubmit}>
                         <div className='input-group'>
-                            <label htmlFor='name'>Name</label>
-                            <input type='text' id='name' name='name' placeholder='Enter your name' value={formData.name} onChange={handleInputChange} required />
+                            <label htmlFor='user'>Name</label>
+                            <input type='text' id='user' name='user' placeholder='Enter your name' value={formData.user} onChange={handleInputChange} required />
                         </div>
                         <div className='input-group'>
                             <label htmlFor='email'>Email</label>
                             <input type='email' id='email' name='email' placeholder='Enter your email' value={formData.email} onChange={handleInputChange} required />
                         </div>
                         <div className='input-group'>
-                            <label htmlFor='password'>Password</label>
-                            <input type='password' id='password' name='password' placeholder='Enter your password' value={formData.password} onChange={handleInputChange} required />
+                            <label htmlFor='pwd'>Password</label>
+                            <input type='password' id='pwd' name='pwd' placeholder='Enter your password' value={formData.pwd} onChange={handleInputChange} required />
                         </div>
                         <div className='input-group'>
                             <label htmlFor='confirmPassword'>Confirm Password</label>

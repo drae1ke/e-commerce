@@ -3,7 +3,6 @@
 .product-card {
   background: transparent;
   border: none;
-  border-radius: 16px;
   padding: 0;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
@@ -26,7 +25,6 @@
   width: 100%;
   height: 240px;
   overflow: hidden;
-  border-radius: 16px 16px 12px 12px;
   background: rgba(255, 255, 255, 0.6);
   backdrop-filter: blur(8px);
   border: 1px solid rgba(255, 255, 255, 0.2);
@@ -47,11 +45,10 @@
 /* Content Area */
 .product-card__content {
   padding: 16px 12px 12px;
-  background: rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.8);
   backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.3);
   border-top: none;
-  border-radius: 0 0 16px 16px;
   position: relative;
 }
 
@@ -92,6 +89,7 @@
   display: flex;
   justify-content: center;
   margin-bottom: 8px;
+  color:orangered
 }
 
 /* Price */
@@ -129,20 +127,20 @@
 
 .product-card--featured .product-card__image-container {
   height: 260px;
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(0, 0, 0, 0);
 }
 
 .product-card--featured .product-card__content {
-  background: rgba(255, 255, 255, 0.85);
+  background: rgba(0, 0, 0, 0);
   backdrop-filter: blur(16px);
 }
 
 /* Grid Layout Support */
 .products-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 24px;
-  padding: 20px 0;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 16px;
+  padding: 10px 0;
 }
 
 /* Responsive Design */
