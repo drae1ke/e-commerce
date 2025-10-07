@@ -33,7 +33,6 @@ const Hero = () => {
           <div className="featured-categories">
             <h2>Featured Categories</h2>
             <div className="category-tags">
-              <div className="category-tag"> <Link to='/contact'>Contact Us</Link> </div>
               <div className="category-tag"><Link to='/computers'>Computers</Link></div>
               <div className="category-tag"><Link to='/accesories'>Accessories</Link></div>
               <div className="category-tag"><Link to='/phones'>Phones</Link></div>

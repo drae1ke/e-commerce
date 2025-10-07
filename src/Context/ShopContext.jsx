@@ -16,6 +16,21 @@ const ShopProvider = (props ) => {
             const res = await axiosClient.get('/products');
             const list = Array.isArray(res.data) ? res.data : (res.data?.data || []);
             // Normalize minimal fields we rely on across UI components
+            const normalizeCategory = (raw) => {
+                const value = (raw || '').toString().trim().toLowerCase();
+                if (!value) return 'others';
+                // computers
+                const computerAliases = ['computer', 'computers', 'pc', 'pcs', 'laptop', 'laptops', 'desktop', 'desktops'];
+                if (computerAliases.includes(value)) return 'computer';
+                // phones
+                const phoneAliases = ['phone', 'phones', 'mobile', 'mobiles', 'smartphone', 'smartphones'];
+                if (phoneAliases.includes(value)) return 'phone';
+                // accessories (also handle common misspellings)
+                const accessoryAliases = ['accessory', 'accessories', 'accesory', 'accesories', 'peripheral', 'peripherals'];
+                if (accessoryAliases.includes(value)) return 'accessory';
+                return 'others';
+            };
+
             const normalized = list.map((p) => {
                 const id = p._id != null ? p._id : p.id;
                 const price = typeof p.price === 'string' ? Number(p.price) : p.price;
@@ -23,7 +38,8 @@ const ShopProvider = (props ) => {
                 const image = p.image || images[0] || '';
                 // Support both isNewArrival and isNewProduct flags
                 const isNewArrival = p.isNewArrival != null ? p.isNewArrival : !!p.isNewProduct;
-                return { ...p, id, price, image, images, isNewArrival };
+                const normalizedCategory = normalizeCategory(p.category);
+                return { ...p, id, price, image, images, isNewArrival, normalizedCategory };
             });
             setProducts(normalized);
         } catch (e) {

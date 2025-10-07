@@ -23,22 +23,22 @@ const Navbar = () => {
               <Link to='/'>Home</Link>
             </li>
             <li 
-              className={menuOpen === "Computers" ? "active" : ""} 
-              onClick={() => { setMenuOpen("Computers"); setMobileMenuOpen(false); }}
+              className={menuOpen === "About Us" ? "active" : ""} 
+              onClick={() => { setMenuOpen("About Us"); setMobileMenuOpen(false); }}
             >
-              <Link to='/computers'>Computers</Link>
+              <Link to='/aboutus'>About Us</Link>
             </li>
             <li 
-              className={menuOpen === "Phones" ? "active" : ""} 
-              onClick={() => { setMenuOpen("Phones"); setMobileMenuOpen(false); }}
+              className={menuOpen === "Contacts" ? "active" : ""} 
+              onClick={() => { setMenuOpen("Contacts"); setMobileMenuOpen(false); }}
             >
-              <Link to='/phones'>Phones</Link>
+              <Link to='/contact'>Contact</Link>
             </li>
             <li 
-              className={menuOpen === "Accesories" ? "active" : ""} 
-              onClick={() => { setMenuOpen("Accesories"); setMobileMenuOpen(false); }}
+              className={menuOpen === "shop" ? "active" : ""} 
+              onClick={() => { setMenuOpen("shop"); setMobileMenuOpen(false); }}
             >
-              <Link to='/accesories'>Accessories</Link>
+              <Link to='/shop'>Shop</Link>
             </li>
           </ul>
         </div>

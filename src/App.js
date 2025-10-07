@@ -9,8 +9,8 @@ import Category from './pages/Category';
 import Login from './pages/Login';
 import Order from './pages/Orders';
 import Footer from './components/Footer';
-import accesories from './assets/accesories_banner.jpg'
-import laptop from './assets/laptop_banner.jpg'
+import accesories from './assets/accesories_banner.webp'
+import laptop from './assets/banner design 4.jpeg'
 import phone from './assets/phone_banner.jpg'
 import Signup from './pages/Signup'
 import AdminDashboard from './pages/AdminDashboard';
