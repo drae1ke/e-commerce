@@ -1,22 +1,21 @@
 import React, { useContext, useState } from 'react'
 import './CSS/cart.css'
 import { ShopContext } from '../Context/ShopContext'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 const Cart = () => {
-  const { cartItems, removeFromCart, updateQuantity, cartSubtotal, clearCart } = useContext(ShopContext)
+  const { cartItems, removeFromCart, updateQuantity, cartSubtotal } = useContext(ShopContext)
   const [isPlacingOrder, setIsPlacingOrder] = useState(false)
+  const navigate = useNavigate()
   
   const deliveryFee = 500
   const totalAmount = cartSubtotal + deliveryFee
 
   const handlePlaceOrder = async () => {
     setIsPlacingOrder(true)
-    // Simulate order processing
-    await new Promise(resolve => setTimeout(resolve, 2000))
-    clearCart()
+    // Navigate to checkout and keep cart intact
+    navigate('/checkout')
     setIsPlacingOrder(false)
-    // You could add a success notification here
   }
 
   if (cartItems.length === 0) {
