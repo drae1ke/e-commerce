@@ -12,7 +12,7 @@ const Navbar = () => {
   return (
     <nav>
       <div className="header">
-        <h1>E-commerce</h1>
+        <h1>FUSHub Electronics</h1>
         
         <div className={`nav-menu ${mobileMenuOpen ? 'active' : ''}`}>
           <ul>

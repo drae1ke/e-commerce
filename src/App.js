@@ -6,6 +6,7 @@ import Cart from './pages/Cart';
 import Checkout from './pages/Checkout';
 import Navbar from './components/Navbar';
 import Category from './pages/Category';
+import Shop from './pages/Shop';
 import Login from './pages/Login';
 import Order from './pages/Orders';
 import Footer from './components/Footer';
@@ -24,6 +25,7 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/shop" element={<Shop />} />
         <Route path="/computers" element={<Category banner ={laptop}  category = "computer" />} />
         <Route path="/phones" element={<Category banner ={phone} category ="phone" />} />
         <Route path="/accesories" element={<Category banner ={accesories}  category = "accessory"/>} />

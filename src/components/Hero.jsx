@@ -11,8 +11,8 @@ const Hero = () => {
           <h1>Welcome to <span>FUSHub</span> - Your Electonics Destination</h1>
           <p>Discover the season's durable Electonics at unbeatable prices. Shop now and get 30% off your first order!</p>
           <div className="hero-cta">
-            <Link to='/computers'><button className="shop-now">Shop Now</button></Link>
-            <Link to='/computers'><button className="explore">Explore Collection</button></Link>
+            <Link to='/shop'><button className="shop-now">Shop Now</button></Link>
+            <Link to='/shop'><button className="explore">Explore Collection</button></Link>
           </div>
           <div className="hero-stats">
             <div className="stat-item">
