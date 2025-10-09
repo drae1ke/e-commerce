@@ -8,22 +8,6 @@ const ShopProvider = (props ) => {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
     const [cartItemsById, setCartItemsById] = useState({});
-
-    // Hydrate cart from localStorage on first mount
-    useEffect(() => {
-        try {
-            const raw = localStorage.getItem('cartItemsById');
-            if (raw) {
-                const parsed = JSON.parse(raw);
-                if (parsed && typeof parsed === 'object') {
-                    setCartItemsById(parsed);
-                }
-            }
-        } catch (e) {
-            // ignore malformed data
-        }
-    }, []);
-
     const refreshProducts = useCallback(async () => {
         setLoading(true);
         setError('');
@@ -107,15 +91,6 @@ const ShopProvider = (props ) => {
 
     const cartCount = useMemo(() => cartItems.reduce((sum, item) => sum + item.quantity, 0), [cartItems]);
     const cartSubtotal = useMemo(() => cartItems.reduce((sum, item) => sum + (Number(item.price) * item.quantity), 0), [cartItems]);
-
-    // Persist cart to localStorage whenever it changes
-    useEffect(() => {
-        try {
-            localStorage.setItem('cartItemsById', JSON.stringify(cartItemsById));
-        } catch (e) {
-            // storage could be full/blocked; fail silently
-        }
-    }, [cartItemsById]);
 
     const contextValue = {
         products,

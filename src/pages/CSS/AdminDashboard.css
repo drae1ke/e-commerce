@@ -31,6 +31,85 @@ main{
 /* Orders status badge */
 .status-badge{ color:#fff; padding:4px 8px; border-radius:999px; font-size:12px; }
 
+/* Status toggle button */
+.status-toggle-btn {
+	background: #3b82f6;
+	color: white;
+	border: none;
+	padding: 6px 12px;
+	border-radius: 4px;
+	font-size: 12px;
+	font-weight: 500;
+	cursor: pointer;
+	transition: all 0.2s;
+}
+
+.status-toggle-btn:hover {
+	background: #2563eb;
+	transform: translateY(-1px);
+}
+
+.status-toggle-btn:active {
+	transform: translateY(0);
+}
+
+/* Loading and error states */
+.loading {
+	text-align: center;
+	padding: 40px;
+	color: #6b7280;
+	font-size: 16px;
+}
+
+.error {
+	text-align: center;
+	padding: 40px;
+	color: #dc2626;
+}
+
+.error h3 {
+	margin: 0 0 10px 0;
+	color: #dc2626;
+}
+
+.retry-btn {
+	background: #dc2626;
+	color: white;
+	border: none;
+	padding: 10px 20px;
+	border-radius: 6px;
+	cursor: pointer;
+	margin-top: 15px;
+	transition: background 0.2s;
+}
+
+.retry-btn:hover {
+	background: #b91c1c;
+}
+
+.no-orders {
+	text-align: center;
+	color: #6b7280;
+	font-style: italic;
+	padding: 40px 20px;
+}
+
+.orders-summary {
+	display: flex;
+	gap: 20px;
+	padding: 15px 20px;
+	background: #f8fafc;
+	border-radius: 8px;
+	font-size: 14px;
+	color: #6b7280;
+	margin-top: 20px;
+}
+
+.orders-summary p {
+	margin: 0;
+	font-weight: 500;
+}
+
 /* Messages layout */
 .messages-layout{ display:flex; gap:16px; }
 .inbox{ width:320px; background:#fafafa; border:1px solid #f1f5f9; border-radius:10px; padding:8px; }

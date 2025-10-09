@@ -14,6 +14,7 @@ const Checkout = () => {
 
   const [form, setForm] = useState({
     address: '',
+    phone: '',
     notes: ''
   })
 
@@ -25,12 +26,19 @@ const Checkout = () => {
   const handlePlaceOrder = async (e) => {
     e.preventDefault()
     if (!cartItems.length) return
+    // basic phone check: digits 7-15
+    const phoneDigits = String(form.phone || '').replace(/\D/g, '')
+    if (phoneDigits.length < 7 || phoneDigits.length > 15) {
+      alert('Please enter a valid phone number')
+      return
+    }
     setPlacingOrder(true)
     try {
       const items = cartItems.map(ci => ({ product: ci.id, quantity: ci.quantity }))
       const payload = {
         items,
         shippingAddress: form.address,
+        phone: form.phone,
         paymentMethod: 'cod',
         transactionId: undefined,
         notes: form.notes || ''
@@ -98,6 +106,10 @@ const Checkout = () => {
         <label>
           Delivery Address
           <input required name='address' value={form.address} onChange={updateField} placeholder='Street, house/apartment, city' />
+        </label>
+        <label>
+          Phone Number
+          <input required name='phone' value={form.phone} onChange={updateField} placeholder='e.g. 0712 345 678' inputMode='tel' />
         </label>
         <label>
           Notes (optional)
