@@ -15,6 +15,8 @@ import laptop from './assets/banner design 4.jpeg'
 import phone from './assets/phone_banner.jpg'
 import Signup from './pages/Signup'
 import AdminDashboard from './pages/AdminDashboard';
+import ForgotPassword from './pages/ForgotPassword';
+import ResetPassword from './pages/ResetPassword';
 
 function App() {
 
@@ -31,6 +33,8 @@ function App() {
         <Route path="/accesories" element={<Category banner ={accesories}  category = "accessory"/>} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
+        <Route path="/reset-password/:token" element={<ResetPassword />} />
         <Route path="/product/:productId" element={<Product />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/checkout" element={<Checkout />} />

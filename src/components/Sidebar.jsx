@@ -56,7 +56,7 @@ const Sidebar = ({ activeItem: activeItemProp, onChange }) => {
                 className={activeItem === 5 ? 'active' : ''}>
                 <div className="sidebar-item">
                     <FaChartLine className="nav-icon"/>
-                    <span className='nav-text'>Analytics</span>
+                    <span className='nav-text'>Settings</span>
                 </div>
             </li>
         </ul>

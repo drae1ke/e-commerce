@@ -40,6 +40,10 @@ const Dashboard = ()=> {
 						<AdminMessages />
 					</React.Suspense>
 				)
+			case 5:
+				return(
+					<Cards/>
+				)
 			default:
 				return <Cards />
 		}

@@ -14,6 +14,7 @@ const Signup = () => {
     })
     const [termsAccepted, setTermsAccepted] = useState(false)
     const [toast, setToast] = useState({ visible: false, message: '', type: 'error' })
+    const [submitting, setSubmitting] = useState(false)
 
     const handleInputChange = (e) => {
         const { name, value } = e.target
@@ -31,14 +32,17 @@ const Signup = () => {
             return
         }
         try {
+            setSubmitting(true)
             const payload = { user: formData.user, email: formData.email, pwd: formData.pwd }
-            const res = await axiosClient.post('/register', payload)
+            const response = await axiosClient.post('/register', payload)
             // success: navigate to login and maybe show success toast
             setToast({ visible: true, message: 'Account created. You can now log in.', type: 'success' })
             setTimeout(() => navigate('/login'), 800)
         } catch (err) {
             const message = err?.response?.data?.message || 'Signup failed. Try again.'
             setToast({ visible: true, message, type: 'error' })
+        } finally {
+            setSubmitting(false)
         }
     }
 
@@ -86,7 +90,9 @@ const Signup = () => {
                             </label>
                         </div>
 
-                        <button type='submit' className='signup-button'>Continue</button>
+                        <button type='submit' className='signup-button' disabled={submitting}>
+                            {submitting ? 'Creating account…' : 'Continue'}
+                        </button>
                     </form>
                     <div className='signup-link'>
                         <p>Already have an account? <Link to="/login">Login</Link></p>
